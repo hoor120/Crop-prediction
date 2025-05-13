@@ -27,20 +27,3 @@ predic = model.predict(x_test)
 print('accuracy :',accuracy_score(predic,y_test))
 
 
-
-# y_test and y_pred ko compare karne ke liye DataFrame
-comparison_df = pd.DataFrame({
-    'Actual': y_test.values,       # actual labels
-    'Predicted': predic            # model ke predictions
-})
-
-# Check karo prediction sahi tha ya nahi
-comparison_df['Match'] = comparison_df['Actual'] == comparison_df['Predicted']
-
-# Sirf pehle 20 rows dekhne ke liye
-print(comparison_df.head(200))
-
-# Match column ka summary
-print(comparison_df['Match'].value_counts())
-wrong_preds = comparison_df[comparison_df['Match'] == False]
-print(wrong_preds)
